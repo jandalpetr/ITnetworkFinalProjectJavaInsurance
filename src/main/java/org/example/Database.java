@@ -47,8 +47,7 @@ public class Database {
 
     /**
      *  metoda getPojistenceByCeleJmeno ulozi pojistence do listu pro vypis pojistencu
-     * @param krestniJmeno String
-     * @param prijmeni String
+     * @param hledanyText String
      * @return vraci list nalezeniPojistenci
      */
     public List<Pojistenec> getPojistenceByCeleJmeno(String hledanyText) {
