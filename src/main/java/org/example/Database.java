@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Iterator;
 
 public class Database {
     private Map<Integer, Pojistenec> pojistenecMap;
@@ -16,7 +15,7 @@ public class Database {
     /**
      * Pridani pojistence, akcteptuje duplicitni zaznam.
      *
-     * @param pojistenec
+     * @param pojistenec objekt pojistence
      */
     public void addPojistence(Pojistenec pojistenec) {
         pojistenecMap.put(pojistenec.getCisloPojistence(), pojistenec);
@@ -63,20 +62,6 @@ public class Database {
 
     /**
      * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
-     * Aktualizace pojistence nalezeneho dle Cisla pojistence
-     *
-     * @param pojistenec
-     */
-    public void updatePojistence(Pojistenec pojistenec) {
-        if (pojistenecMap.containsKey(pojistenec.getCisloPojistence())) {
-            pojistenecMap.put(pojistenec.getCisloPojistence(), pojistenec);
-        } else {
-            throw new IllegalArgumentException("Pojistenec neni v databasi");
-        }
-    }
-
-    /**
-     * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
      * Hledani pojistence dle cisla pojistence
      *
      * @param CisloPojistence cislo pojistence ktereho hledame
@@ -108,7 +93,7 @@ public class Database {
      * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
      * Mazani pojistence dle CislaPojistence
      *
-     * @param CisloPojistence
+     * @param CisloPojistence unikatni cislo pojistence
      */
 
     public void deletePojistence(int CisloPojistence) {
