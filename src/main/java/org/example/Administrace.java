@@ -1,11 +1,12 @@
 package org.example;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class Administrace {
     Scanner scanner = new Scanner(System.in, "Windows-1250");
     Database database = new Database();
-    InputValidator inputValidator= new InputValidator(scanner);
+    InputValidator inputValidator = new InputValidator(scanner);
     //Administrace administrace = new Administrace();
 
     /**
@@ -13,18 +14,6 @@ public class Administrace {
      */
     public void start() {
         String volba = "";
-        // Pridani pojistenc
-        Pojistenec pojistenec1 = new Pojistenec(0,"John", "Doe", 30, "+123456789");
-        Pojistenec pojistenec2 = new Pojistenec(0,"Petr", "Novak", 25, "+987654321");
-        Pojistenec pojistenec3 = new Pojistenec(0,"Martin", "Homola", 26, "+987654322");
-        Pojistenec pojistenec4 = new Pojistenec(0,"Petr", "Jandal ", 27, "+987654323");
-        Pojistenec pojistenec5 = new Pojistenec(0,"Honza", "Marousek", 28, "+987654324");
-
-        database.addPojistence(pojistenec1);
-        database.addPojistence(pojistenec2);
-        database.addPojistence(pojistenec3);
-        database.addPojistence(pojistenec4);
-        database.addPojistence(pojistenec5);
         // hlavní cyklus
         while (!volba.equals("4")) {
             //diar.vypisUvodniObrazovku();
@@ -37,6 +26,7 @@ public class Administrace {
             System.out.println("2 - Vypsat všechny pojištěné");
             System.out.println("3 - Vyhledat pojištěného dle jména nebo příjmení");
             System.out.println("4 - Konec");
+            System.out.println("5 - Naplneni testovacimi daty");
             volba = scanner.nextLine();
             System.out.println();
             // reakce na volbu
@@ -57,6 +47,10 @@ public class Administrace {
                     // vyskočí z cyklu while a tím ukončí program
                     //"4 - Konec"
                     break;
+                case "5":
+                    // 5- Naplneni testovacimi daty
+                    naplneniTestDaty();
+                    break;
                 default:
                     System.out.println("Neplatná volba, stiskněte libovolnou klávesu a opakujte volbu.");
                     break;
@@ -66,27 +60,44 @@ public class Administrace {
         scanner.close();
     }
 
-    public void pridatPojistence(){
-        String krestniJmeno=inputValidator.getNeprazdnyRetezec("Zadejte krestni jmeno pojisteneho:");
-        String prijmeni=inputValidator.getNeprazdnyRetezec("Zadejte prijmeni pojisteneho:");
-        int vek=inputValidator.getNezaporneCislo("Zadejte vek pojisteneho:");
-        String telefonniCislo=inputValidator.getNeprazdnyRetezec("Zadejte telefonni cislo vcetne predvoby ve formatu +4200000000: ");//ToDo toto jeste musim dodelat
+    /**
+     * pri pridani pojistence probiha kontrola
+     * -na format vlozenych dat
+     * -kontrola zda stejny pojistenec jiz nebyl zadan (toto neni vyslovne v zadani)
+     */
+    public void pridatPojistence() {
+        String krestniJmeno = inputValidator.getNeprazdnyRetezec("Zadejte krestni jmeno pojisteneho:");
+        String prijmeni = inputValidator.getNeprazdnyRetezec("Zadejte prijmeni pojisteneho:");
+        int vek = inputValidator.getNezaporneCislo("Zadejte vek pojisteneho:");
+        String telefonniCislo = inputValidator.getNeprazdnyRetezec("Zadejte telefonni cislo vcetne predvoby ve formatu +00000000: ");//ToDo toto musim jeste vylepsi Regex na mezinarodni kod
 
-        Pojistenec pojistenec = new Pojistenec(0,krestniJmeno, prijmeni, vek, telefonniCislo);
-        database.addPojistence(pojistenec);
+        // Kontrola zda stejny pojistenec jiz nebyl zadan (toto neni vyslovne v zadani)
+        Pojistenec pojistenec = new Pojistenec(0, krestniJmeno, prijmeni, vek, telefonniCislo);
+        boolean jeDuplicitniPojistenec = database.jeDuplicitni(pojistenec);
 
-        System.out.println(" ");
-        System.out.println("Pojistenec pridan.");
+        if (jeDuplicitniPojistenec) {
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("Pojistened nebude pridan. Stejny pojistenec jiz byl zadan v databasi");
+            System.out.println(" ");
+            System.out.println(" ");
+        } else {
+            database.addPojistence(pojistenec);
+            System.out.println(" ");
+            System.out.println("Pojistenec pridan.");
+            System.out.println(" ");
+        }
     }
+
     /**
      * Vypise vsechny pojistence v databasi, pokud je database prazdna, upozoroni na to.
      */
-    public void vypisVsechPojistencu(){
+    public void vypisVsechPojistencu() {
         // Vypis vsech pojistencu
-        List<Pojistenec> vypisVsechPojistencu = database.getAllPojistenci ();
-        if(vypisVsechPojistencu.isEmpty()){
+        List<Pojistenec> vypisVsechPojistencu = database.getAllPojistenci();
+        if (vypisVsechPojistencu.isEmpty()) {
             System.out.println("Database pojistencu je prazdna, zadejte volbu 1:");
-        }else {
+        } else {
             // Vypis nalezenych pojistencu
             System.out.println("Vsichni Pojistenci:");
             TiskPojistencu.tiskNalezeniPojistenci(vypisVsechPojistencu);
@@ -96,16 +107,35 @@ public class Administrace {
     /**
      * Nalezeni pojistencu dle Jmena nebo Prijmeni
      */
-    public void nalezeniPojistenciByCeleJmeno(){
+    public void nalezeniPojistenciByCeleJmeno() {
         System.out.print("Pro vyhledani pojistence, zadejte i cast jmena nebo prijmeni : ");
         String searchString = scanner.nextLine();
-        if (searchString.isEmpty()){
+        if (searchString.isEmpty()) {
             System.out.println("Nic jste nezadali, vratim Vas do hlavniho menu");
-        }else {
-            List<Pojistenec> nalezeniPojistenciByCeleJmeno = database.getPojistenceByCeleJmeno (searchString);
+        } else {
+            List<Pojistenec> nalezeniPojistenciByCeleJmeno = database.getPojistenceByCeleJmeno(searchString);
             // Vypis nalezenych pojistencu
-            System.out.println("Nalezeni Pojistenci dle Jmena nebo Prijmeni :"+searchString );
+            System.out.println("Nalezeni Pojistenci dle Jmena nebo Prijmeni :" + searchString);
             TiskPojistencu.tiskNalezeniPojistenci(nalezeniPojistenciByCeleJmeno);
         }
+    }
+
+    /**
+     * Metoda pro pridani vzorovych dat do database
+     */
+    public void naplneniTestDaty() {
+        //Pridani pojistenc
+        Pojistenec pojistenec1 = new Pojistenec(1, "John", "Doe", 30, "+123456789");
+        Pojistenec pojistenec2 = new Pojistenec(2, "Petr", "Novak", 25, "+987654321");
+        Pojistenec pojistenec3 = new Pojistenec(3, "Martin", "Homola", 26, "+987654322");
+        Pojistenec pojistenec4 = new Pojistenec(4, "Petr", "Jandal ", 27, "+987654323");
+        Pojistenec pojistenec5 = new Pojistenec(5, "Honza", "Marousek", 28, "+987654324");
+
+        database.addPojistence(pojistenec1);
+        database.addPojistence(pojistenec2);
+        database.addPojistence(pojistenec3);
+        database.addPojistence(pojistenec4);
+        database.addPojistence(pojistenec5);
+        System.out.println("Testovaci data pojistencu byla vlozena.");
     }
 }

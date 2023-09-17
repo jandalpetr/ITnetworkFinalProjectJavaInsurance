@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Scanner;
 
 public class InputValidator {
@@ -13,6 +14,7 @@ public class InputValidator {
 
     /**
      * Validace zda bylo zadano varchar ( text nebo cislo )
+     *
      * @param prompt vstupni varchar
      * @return vraci varchar
      */

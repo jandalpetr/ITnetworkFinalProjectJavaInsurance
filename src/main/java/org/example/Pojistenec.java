@@ -1,7 +1,7 @@
 package org.example;
 
 public class Pojistenec {
-    private static int dalsiCisloPojistence =1; //staticke pro sledovani dalsiho cisla pojistnce
+    private static int dalsiCisloPojistence = 1; //staticke pocatecni cislo pojistnce
     private int cisloPojistence; // unikatni cislo pojistnec
     private String krestniJmeno; //Krestni jmeno pojistence
     private String prijmeni; //Prijmeni pojistence
@@ -10,16 +10,16 @@ public class Pojistenec {
 
     // konstruktor pro inizializaci objektu Pojistenec
     public Pojistenec(int cisloPojistence, String krestniJmeno, String prijmeni, int vek, String telefonniCislo) {
-        if (vek<0 || vek >200){
+        if (vek < 0 || vek > 200) {
             throw new IllegalArgumentException("Vek nemuze byt zaporny a vetsi nez 200let.");
         }
-        if (telefonniCislo == null || telefonniCislo.isEmpty()){
+        if (telefonniCislo == null || telefonniCislo.isEmpty()) {
             throw new IllegalArgumentException("Telefonni cislo nemuze byt prazdne.");
         }
-        if (krestniJmeno.isEmpty()){
+        if (krestniJmeno.isEmpty()) {
             throw new IllegalArgumentException("Krestni nesmi byt prazdne.");
         }
-        if (prijmeni.isEmpty()){
+        if (prijmeni.isEmpty()) {
             throw new IllegalArgumentException("Prijmeni nesmi byt prazdne.");
         }
 
@@ -45,7 +45,7 @@ public class Pojistenec {
     }
 
     public void setKrestniJmeno(String krestniJmeno) {
-        if (krestniJmeno.isEmpty()){
+        if (krestniJmeno.isEmpty()) {
             throw new IllegalArgumentException("Krestni nesmi byt prazdne.");
         }
         this.krestniJmeno = krestniJmeno;
@@ -56,20 +56,20 @@ public class Pojistenec {
     }
 
     public void setPrijmeni(String prijmeni) {
-        if (prijmeni.isEmpty()){
+        if (prijmeni.isEmpty()) {
             throw new IllegalArgumentException("Prijmeni nesmi byt prazdne.");
         }
         this.prijmeni = prijmeni;
     }
 
 
-
     public void setVek(int vek) {
-        if (vek<0 || vek >200){
+        if (vek < 0 || vek > 200) {
             throw new IllegalArgumentException("Vek nemuze byt zaporny a vetsi nez 200let.");
         }
         this.vek = vek;
     }
+
     public int getVek() {
         return vek;
     }
@@ -79,7 +79,7 @@ public class Pojistenec {
     }
 
     public void setTelefonniCislo(String telefonniCislo) {
-        if (telefonniCislo == null || telefonniCislo.isEmpty()){
+        if (telefonniCislo == null || telefonniCislo.isEmpty()) {
             throw new IllegalArgumentException("Telefonni cislo nemuze byt prazdne");
         }
         this.telefonniCislo = telefonniCislo;
