@@ -36,38 +36,13 @@ public class Pojistenec {
         return cisloPojistence;
     }
 
-    public void setCisloPojistence(int cisloPojistence) {
-        this.cisloPojistence = cisloPojistence;
-    }
 
     public String getKrestniJmeno() {
         return krestniJmeno;
     }
 
-    public void setKrestniJmeno(String krestniJmeno) {
-        if (krestniJmeno.isEmpty()) {
-            throw new IllegalArgumentException("Krestni nesmi byt prazdne.");
-        }
-        this.krestniJmeno = krestniJmeno;
-    }
-
     public String getPrijmeni() {
         return prijmeni;
-    }
-
-    public void setPrijmeni(String prijmeni) {
-        if (prijmeni.isEmpty()) {
-            throw new IllegalArgumentException("Prijmeni nesmi byt prazdne.");
-        }
-        this.prijmeni = prijmeni;
-    }
-
-
-    public void setVek(int vek) {
-        if (vek < 0 || vek > 200) {
-            throw new IllegalArgumentException("Vek nemuze byt zaporny a vetsi nez 200let.");
-        }
-        this.vek = vek;
     }
 
     public int getVek() {
@@ -76,12 +51,5 @@ public class Pojistenec {
 
     public String getTelefonniCislo() {
         return telefonniCislo;
-    }
-
-    public void setTelefonniCislo(String telefonniCislo) {
-        if (telefonniCislo == null || telefonniCislo.isEmpty()) {
-            throw new IllegalArgumentException("Telefonni cislo nemuze byt prazdne");
-        }
-        this.telefonniCislo = telefonniCislo;
     }
 }

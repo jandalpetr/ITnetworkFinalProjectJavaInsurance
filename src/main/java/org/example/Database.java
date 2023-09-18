@@ -60,45 +60,12 @@ public class Database {
         return nalezeniPojistenci;
     }
 
-    /**
-     * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
-     * Hledani pojistence dle cisla pojistence
-     *
-     * @param CisloPojistence cislo pojistence ktereho hledame
-     * @return vraci nalezeho pojistence
-     */
-    public Pojistenec getPojistenceById(int CisloPojistence) {
-        return pojistenecMap.get(CisloPojistence);
-    }
-
-    /**
-     * metoda getPojistenceByTelefonniCislo ulozi pojistence do listu pro vypis pojistencu
-     *
-     * @param telefonniCislo je String
-     * @return vraci list nalezeniPojistenci
-     */
-    public List<Pojistenec> getPojistenceByTelefonniCislo(String telefonniCislo) {
-        List<Pojistenec> nalezeniPojistenci = new ArrayList<>();
-
-        for (Pojistenec pojistenec : pojistenecMap.values()) {
-            if (pojistenec.getTelefonniCislo().toLowerCase().contains(telefonniCislo.toLowerCase())) {
-                nalezeniPojistenci.add(pojistenec);
-            }
-        }
-
-        return nalezeniPojistenci;
-    }
-
-    /**
+     /**
      * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
      * Mazani pojistence dle CislaPojistence
      *
      * @param CisloPojistence unikatni cislo pojistence
      */
-
-    public void deletePojistence(int CisloPojistence) {
-        pojistenecMap.remove(CisloPojistence);
-    }
 
     /**
      * metoda getAllPojistence pro vypis vsech pojistencu

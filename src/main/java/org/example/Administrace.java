@@ -105,10 +105,10 @@ public class Administrace {
     }
 
     /**
-     * Nalezeni pojistencu dle Jmena nebo Prijmeni
+     * Nalezeni pojistencu dle Jmena nebo Prijmeni -neni Case Sensitive
      */
     public void nalezeniPojistenciByCeleJmeno() {
-        System.out.print("Pro vyhledani pojistence, zadejte i cast jmena nebo prijmeni : ");
+        System.out.print("Pro vyhledani pojistence, zadejte i cast jmena nebo prijmeni (neni Case Sensitive): ");
         String searchString = scanner.nextLine();
         if (searchString.isEmpty()) {
             System.out.println("Nic jste nezadali, vratim Vas do hlavniho menu");
