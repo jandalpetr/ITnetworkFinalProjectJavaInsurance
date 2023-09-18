@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Database {
     private Map<Integer, Pojistenec> pojistenecMap;
@@ -60,13 +57,6 @@ public class Database {
         return nalezeniPojistenci;
     }
 
-     /**
-     * metoda neni vyzadovana v zadani a tak neni vyuzita v tride administrace
-     * Mazani pojistence dle CislaPojistence
-     *
-     * @param CisloPojistence unikatni cislo pojistence
-     */
-
     /**
      * metoda getAllPojistence pro vypis vsech pojistencu
      *
@@ -78,7 +68,6 @@ public class Database {
         for (Pojistenec pojistenec : pojistenecMap.values()) {
             nalezeniPojistenci.add(pojistenec);
         }
-
         return nalezeniPojistenci;
     }
 }
