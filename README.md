@@ -20,9 +20,9 @@ Naprogramuj konzolovou aplikaci pro evidenci pojistných událostí. Před odevz
 Editaci a odstranění pojištěných ani ukládání dat po skončení aplikace není třeba řešit.
 
 ### Ukázkové obrazovky aplikace
-Přidání pojištěného:
+### Přidání pojištěného:
 ![Přidání pojištěného:](pojisteni_konzole1.png "Přidání pojištěného")
-Výpis všech pojištěných:
+### Výpis všech pojištěných:
 ![Výpis všech pojištěných:](pojisteni_konzole2.png "Výpis všech pojištěných")
-Vyhledání pojištěného:
+### Vyhledání pojištěného:
 ![Vyhledání pojištěného:](pojisteni_konzole3.png "Vyhledání pojištěného")
