@@ -9,6 +9,7 @@ public class Pojistenec {
     private String telefonniCislo; // Telefonn cislo ukladame jak text vcetne predvolby
 
     // konstruktor pro inizializaci objektu Pojistenec
+    // LJ argument cisloPojistence je ignorovany (stejne to vezme salsiCisloPojistence), muzes ho odebrat
     public Pojistenec(int cisloPojistence, String krestniJmeno, String prijmeni, int vek, String telefonniCislo) {
         if (vek < 0 || vek > 200) {
             throw new IllegalArgumentException("Vek nemuze byt zaporny a vetsi nez 200let.");

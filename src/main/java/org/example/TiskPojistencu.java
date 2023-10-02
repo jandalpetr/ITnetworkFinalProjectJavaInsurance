@@ -29,6 +29,7 @@ public class TiskPojistencu {
 
         // Tisk pojistencu zarovnano do sloupcu
         for (Pojistenec pojistenec : nalezeniPojistenci) {
+            // LJ v readme j pozadavek na toString() metodu :) ale ani me vlastne nenapada kde ji vhodne pouzit, zrovna tady by se asi moc nehodila
             System.out.printf(
                     "%-" + maxCisloPojistenceDelka + "d  %-" + maxKrestniJmenoDelka + "s  %-" + maxPrijmeniDelka + "s  %-" + maxVekDelka + "s  %-" + maxTelefonniCisloDelka + "s%n",
                     pojistenec.getCisloPojistence(),

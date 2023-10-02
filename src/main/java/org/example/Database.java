@@ -42,13 +42,14 @@ public class Database {
     /**
      * metoda getPojistenceByCeleJmeno ulozi pojistence do listu pro vypis pojistencu
      *
-     * @param hledanyText String
+     * @param hledanyText String // LJ vhodne jmeno parametru by bylo treba nameSubstring
      * @return vraci list nalezeniPojistenci
      */
     public List<Pojistenec> getPojistenceByCeleJmeno(String hledanyText) {
         List<Pojistenec> nalezeniPojistenci = new ArrayList<>();
 
         for (Pojistenec pojistenec : pojistenecMap.values()) {
+            // LJ klidne pridat promennou `String hledanyTextLowercase = hledanyText.toLowerCase()` (az se jednou v budoucnu rozhodne ze vyhledavani je case-sensitive, je mensi sance ze to zapomenes zmenit na obou mistech) 
             if (pojistenec.getKrestniJmeno().toLowerCase().contains(hledanyText.toLowerCase()) || pojistenec.getPrijmeni().toLowerCase().contains(hledanyText.toLowerCase())) {
                 nalezeniPojistenci.add(pojistenec);
             }

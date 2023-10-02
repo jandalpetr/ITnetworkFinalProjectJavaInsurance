@@ -9,6 +9,7 @@ public class Administrace {
     InputValidator inputValidator = new InputValidator(scanner);
     //Administrace administrace = new Administrace();
 
+    // LJ vyhnout se michani cestiny a anglictiny, chapu ze zde zadani vyzadovalo cestinu. Idealne anglictina vsude - dokumentace, kod, javadoc
     /**
      * Start aplikace
      */
@@ -16,7 +17,15 @@ public class Administrace {
         String volba = "";
         // hlavní cyklus
         while (!volba.equals("4")) {
+            // LJ smazat zakomentovany kod, pravdepodobne ho nikdy nikdo uz neodkomentuje (a kdyz by ho presto chtel pouzit, podiva se do historie diky GITu)
             //diar.vypisUvodniObrazovku();
+            // LJ nebat se rozdelit na vice mensich metod delajicich jednu vec. Zde treba:
+            // while (!volba.equals("4")) {
+            //   printInstructionsToConsole();
+            //    volba = scanner.nextLine();
+            //    System.out.println();
+            //    doAction(volba)    // do doAction() bys schoval celou tu swich(..){..} logiku
+            // 
             System.out.println();
             System.out.println("--------------------------------------------------");
             System.out.println("Evidence pojistenych");
@@ -60,6 +69,7 @@ public class Administrace {
         scanner.close();
     }
 
+    // LJ metody, ktere nejsou volany z jinych trid, udelat private
     /**
      * pri pridani pojistence probiha kontrola
      * -na format vlozenych dat
@@ -72,6 +82,7 @@ public class Administrace {
         String telefonniCislo = inputValidator.getNeprazdnyRetezec("Zadejte telefonni cislo vcetne predvoby ve formatu +00000000: ");//ToDo toto musim jeste vylepsi Regex na mezinarodni kod
 
         // Kontrola zda stejny pojistenec jiz nebyl zadan (toto neni vyslovne v zadani)
+        // LJ cislo pojistence by asi melo byt bud zadano nebo treba nahodne (Math.random)
         Pojistenec pojistenec = new Pojistenec(0, krestniJmeno, prijmeni, vek, telefonniCislo);
         boolean jeDuplicitniPojistenec = database.jeDuplicitni(pojistenec);
 
@@ -89,6 +100,10 @@ public class Administrace {
         }
     }
 
+    // LJ obecne bych se vice vyhybal `void` metodam a vracel z nich radsi boolean:
+    // - treba v pripade uspesne operace vrati true, jinak false.
+    // - pak muzes treba logovat/vypisovat na jednom miste vsechny neuspesne operace
+    // - a predevsim to je lepe testovatelny - void metody se testuji tezko
     /**
      * Vypise vsechny pojistence v databasi, pokud je database prazdna, upozoroni na to.
      */

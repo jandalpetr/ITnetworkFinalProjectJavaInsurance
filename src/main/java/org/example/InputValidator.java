@@ -3,6 +3,7 @@ package org.example;
 import java.util.Scanner;
 
 public class InputValidator {
+    // LJ javadoc tridy by mel byt nad tridou, ne nad fieldem
     /**
      * Trida pro overeni zda zadany retezec odpovida pozadavkum
      */

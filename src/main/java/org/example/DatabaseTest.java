@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+// LJ chvalim pridani testu. Ty by vsak mely byt ve slozce `test`, ne ve slozce `src`, aby se daly jednoduse poustet pomoci `mvn test`
+// obecne tech testu pridat co nejvic a pro co nejvic trid - mimo jine to pomaha napsat citelnejsi a dobre testovatelny program
 public class DatabaseTest {
     private Database database;
 
@@ -18,6 +20,8 @@ public class DatabaseTest {
         database.addPojistence(pojistenec2);
     }
 
+    // LJ radsi rozdelit do dvou testu a vhodne testy pojmenovat, pak neni treba komentaru a kdyz test spadne, hned je z nazvu spadleho testu jasne. kde je chyba.
+    // Zde treba `testJeDuplicitini should return true for user with all same fields` a `testJeDuplicitini should return false for user with same number but different name`
     @Test
     public void testJeDuplicitni() {
         // Test na duplicitniho pojistence
