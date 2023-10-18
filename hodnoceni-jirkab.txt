@@ -1,0 +1,13 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - metody pojmenováváme pokud možno slovesem v činném tvaru, proto vypisVsechnyPojistence() je lepší než vypisVsechPojistencu(), podobně např. naplnTestDaty() nebo pridejPojistence(). Název by měl odpovídat tomu, co dělá, takže getPojistenceByCeleJmeno() je zavádějící, když vyhledává i podřetězce (plus vzácná kombinace opakovaného střídání cz a en v názvu)
+2. Dodržení principů SRP a SoC - ok
+3. Vhodný výběr datových typů - ok
+4. Formátování kódu - ok
+5. Duplicitní kód a nekonečné cykly - ok
+6. Validace vstupních dat - pokud konstruktor pojištěnce může vyhazovat výjimku, hodilo by se v hlavním programu (Administrace) její zachytávání
+7. Logičnost a složitost - nadbytečný parametr cisloPojistence v konstruktoru, nevyužívá se a neměl by tam vůbec být.
+8. Komentáře - ok
+9. Celkové hodnocení - ok s drobnými výhradami
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!
